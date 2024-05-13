@@ -1,0 +1,16 @@
+version: '1'
+services:
+  vrising:
+      build: . # Build from Dockerfile
+      container_name: vrising
+      image: steam-wine-arm
+      network_mode: bridge
+      environment:
+        - TZ=America/Los_Angeles
+        - SERVERNAME=slau_vrising_docker
+      volumes:
+        - './server:/mnt/vrising/server:rw'
+        - './data:/mnt/vrising/persistentdata:rw'
+      ports:
+        - '9876:9876/udp'
+        - '9877:9877/udp'
